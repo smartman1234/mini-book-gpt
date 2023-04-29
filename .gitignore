@@ -34,3 +34,12 @@
 !/app/assets/builds/.keep
 
 /node_modules
+
+# Book
+book.pdf
+
+# Embeddings
+embeddings.csv
+
+# Env file
+.env
