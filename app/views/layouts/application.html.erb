@@ -8,6 +8,171 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+    <style type="text/css">
+      html {
+        max-width: 70ch;
+        /* larger spacing on larger screens, very small spacing on tiny screens */
+        padding: calc(1vmin + .5rem);
+        /* shorthand for margin-left/margin-right */
+        margin-inline: auto;
+        /* fluid sizing: https://frontaid.io/blog/fluid-typography-2d-css-locks-clamp/ */
+        font-size: clamp(1em, 0.909em + 0.45vmin, 1.25em);
+        /* use system font stack: https://developer.mozilla.org/en-US/docs/Web/CSS/font-family */
+        font-family: system-ui
+      }
+
+      /* increase line-height for everything except headings */
+      body :not(:is(h1,h2,h3,h4,h5,h6)) {
+        line-height: 1.75;
+      }
+
+      .header {
+        margin-top: 5vh;
+        text-align: center;
+      }
+
+      .hidden {
+        opacity: 0;
+        display: none;
+      }
+
+      .showing {
+        display: block;
+        opacity: 1;
+      }
+
+      .logo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .logo h1 {
+        font-weight: bold;
+        margin-bottom: 0;
+        font-size: 24px;
+        line-height: 36px;
+      }
+
+      .logo img {
+        height: 200px;
+      }
+
+      h1 + p {
+        margin-top: 0;
+      }
+
+      .main {
+        margin: 1rem auto;
+        max-width: 600px;
+      }
+
+      select,
+      textarea,
+      button,
+      .button {
+        box-sizing: border-box;
+        width: 100%;
+        border: 1px solid black;
+        border-radius: 10px;
+        font-size: 18px;
+        padding: 8px 12px;
+      }
+
+      button,
+      .button {
+        display: inline-block;
+        color: white;
+        background: black;
+        margin-top: 1rem;
+        width: auto;
+        padding: 8px 18px;
+      }
+
+      button:hover {
+        cursor: pointer;
+      }
+
+      button:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      p {
+        display: block;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      audio {
+        display: block;
+        width: 100%;
+        display: none;
+      }
+
+      form.small textarea {
+        min-height: 10rem;
+      }
+
+      ul.queue {
+        padding: 0;
+      }
+
+      ul.queue li {
+        list-style: none;
+        border-bottom: 1px solid black;
+        padding: 2rem 0;
+      }
+
+      ul.queue li:last-of-type {
+        border-bottom: 0;
+      }
+
+      img {
+        max-width: 320px;
+        max-height: 480px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+        border-radius: 10px;
+      }
+
+      h2 {
+        margin-top: 0;
+      }
+
+      .credits {
+        display: block;
+        color: #777;
+      }
+
+      footer {
+        margin-top: 2rem;
+      }
+
+      .questions {
+        padding: 0;
+      }
+
+      .questions li {
+        background: #eee;
+        border-radius: 10px;
+        padding: 4px 8px;
+        margin: 10px 10px 0 0;
+        display: block;
+      }
+
+      footer {
+        text-align: center;
+      }
+    </style>
   </head>
 
   <body>

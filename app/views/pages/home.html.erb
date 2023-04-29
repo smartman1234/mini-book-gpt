@@ -1,6 +1,20 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="header">
+  <div class="logo">
+    <a href="https://www.amazon.com/Minimalist-Entrepreneur-Great-Founders-More/dp/0593192397">
+      <img src="/book.png" loading="lazy" />
+    </a>
+    <h1>Ask My Book</h1>
+  </div>
+</div>
 
-<%= content_tag(:div, "", id: "app", data: {
+<div class="main">
+  <p class="credits">This is an experiment in using AI to make my book's content more accessible. Ask a question and AI'll answer it in real-time:</p>
+
+  <%= content_tag(:div, "", id: "app", data: {
     controller: "app",
-})%>
+  })%>
+</div>
+
+<footer>
+  <p class="credits">Project by <a href="https://twitter.com/shlaishwaryaadyan2">Aishwarya Adyanthaya</a> • <a href="https://github.com/">Fork on GitHub</a></a></p>
+</footer>
