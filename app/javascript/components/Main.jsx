@@ -63,12 +63,12 @@ export const Main = () => {
         body: JSON.stringify({ question })
       });
       const data = await res.json();
-      setLoading(false);
       setQna({ ...data });
     } catch (error) {
-      setLoading(false);
       console.error('Error fetching answer:', error);
     }
+    setLoading(false);
+    setIsAutoFilled(false);
   };
 
   const handleSubmit = async e => {
