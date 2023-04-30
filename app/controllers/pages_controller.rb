@@ -5,7 +5,8 @@ class PagesController < ApplicationController
       @serialized_question = {
         id: @question.id,
         question: @question.question,
-        answer: @question.answer
+        answer: @question.answer,
+        audio_url: @question.audio_url
       }.to_json
     end
   end

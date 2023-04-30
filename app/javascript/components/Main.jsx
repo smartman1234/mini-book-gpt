@@ -4,7 +4,8 @@ import { Answer } from './Answer';
 
 const defaultQna = {
   question: 'What is The Minimalist Entrepreneur about?',
-  answer: ''
+  answer: '',
+  audio_url: ''
 };
 
 export const Main = () => {
@@ -63,7 +64,7 @@ export const Main = () => {
       });
       const data = await res.json();
       setLoading(false);
-      setQna({ ...data, question });
+      setQna({ ...data });
     } catch (error) {
       setLoading(false);
       console.error('Error fetching answer:', error);
@@ -79,18 +80,18 @@ export const Main = () => {
     triggerAsk();
   };
 
-  const reset = () => {
+  const reset = useCallback(() => {
     setDisplayText('');
     setCurrentIndex(0);
     setLoading(false);
     audioRef.current?.pause();
-  };
+  }, [setDisplayText, setCurrentIndex, setLoading, audioRef]);
 
   const handleQuestionChange = useCallback(e => {
     setQna({ ...defaultQna, question: e.target.value });
     setIsAutoFilled(false);
     reset();
-  }, []);
+  }, [setQna, setIsAutoFilled, reset]);
 
   const handleLucky = useCallback(e => {
     e.preventDefault();
@@ -107,14 +108,14 @@ export const Main = () => {
     });
     setIsAutoFilled(true);
     reset();
-  }, []);
+  }, [setIsAutoFilled, reset, setQna]);
 
   const handleAskAnother = useCallback(e => {
     e.preventDefault();
     setQna({ ...defaultQna, question });
     textAreaRef.current?.select();
     reset();
-  }, []);
+  }, [defaultQna, question, reset, textAreaRef, setQna]);
 
   return (
     <div>

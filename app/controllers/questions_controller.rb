@@ -1,6 +1,6 @@
-require 'tokenizers'
-require 'cosine_similarity'
-require 'openai'
+require "tokenizers"
+require "cosine_similarity"
+require "openai"
 
 class QuestionsController < ApplicationController
   before_action :initialize_services, only: [:ask]
@@ -14,9 +14,10 @@ class QuestionsController < ApplicationController
 
         render json: {
           id: @previous_question.id,
-          type: 'cache',
+          type: "cache",
           question: @question,
-          answer: @previous_question.answer
+          answer: @previous_question.answer,
+          audio_url: @previous_question.audio_url
         }
       else
         answer_with_context = @openai_service.get_answer(@question)
@@ -28,13 +29,24 @@ class QuestionsController < ApplicationController
           answer = answer_with_context[:answer]
           context = answer_with_context[:context]
 
-          question_db = Question.create(question: @question, answer: answer, context: context)
+          # Here I'd use Resemble AI api to fetch the audio file for the answer.
+          # I currently don't have a subscription so I've used a sample one to
+          # show I'd integrate the audio
+          audio_url = "/test_audio.mp3"
+
+          question_db = Question.create(
+            question: @question,
+            answer: answer,
+            context: context,
+            audio_url: audio_url
+          )
 
           render json: {
             id: question_db.id,
-            type: 'network',
+            type: "network",
             question: @question,
-            answer: answer
+            answer: answer,
+            audio_url: audio_url
           }
         end
       end
@@ -53,8 +65,12 @@ class QuestionsController < ApplicationController
 
   private
   def find_question
-    
-    @question = "What is The Minimalist Entrepreneur about?"
+    @question = question_params[:question]
     @previous_question = Question.find_by(question: @question)
+  end
+
+  private
+  def question_params
+    params.permit(:question)
   end
 end

@@ -1,11 +1,11 @@
-require 'tokenizers'
-require 'cosine_similarity'
-require 'openai'
+require "tokenizers"
+require "cosine_similarity"
+require "openai"
 
 class OpenaiService
   def initialize
     @tokenizer = Tokenizers.from_pretrained("gpt2")
-    @openai_client = OpenAI::Client.new(access_token: ENV['OPENAI_TOKEN'])
+    @openai_client = OpenAI::Client.new(access_token: ENV["OPENAI_TOKEN"])
   end
 
   def get_answer(question)
@@ -25,7 +25,7 @@ class OpenaiService
         }
       )
 
-      answer = response["choices"][0]['text']
+      answer = response["choices"][0]["text"]
 
       return { answer: answer, context: chosen_sections }
     rescue StandardError => e
@@ -43,7 +43,7 @@ class OpenaiService
       }
     )
 
-    question_embedding = response['data'][0]['embedding']
+    question_embedding = response["data"][0]["embedding"]
     return question_embedding
   end
 
@@ -52,13 +52,13 @@ class OpenaiService
     similarity_array = []
 
     CSV.foreach("embeddings.csv", headers: true) do |row|
-      text_embedding =  JSON.parse(row['Embedding'])
+      text_embedding =  JSON.parse(row["Embedding"])
       score = cosine_similarity(question_embedding, text_embedding)
 
       similarity_array << { 
-        "text" => row['Text'],
+        "text" => row["Text"],
         "similarity_score" => score,
-        "tokens" => row['Tokens'].to_i { 0 }
+        "tokens" => row["Tokens"].to_i { 0 }
       }
     end
 
