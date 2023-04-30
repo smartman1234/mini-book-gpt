@@ -40,6 +40,7 @@ book.pdf
 
 # Embeddings
 embeddings.csv
+log.txt
 
 # Env file
 .env

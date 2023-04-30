@@ -80,3 +80,5 @@ gem "csv", "~> 3.2"
 gem "tokenizers", "~> 0.3.3"
 
 gem "ruby-openai", "~> 4.0"
+
+gem "cosine-similarity", "~> 1.0"
