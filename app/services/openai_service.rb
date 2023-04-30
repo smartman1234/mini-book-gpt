@@ -16,8 +16,6 @@ class OpenaiService
 
       prompt = construct_prompt(question, chosen_sections)
 
-      puts "PROMPT #{prompt}"
-
       response = @openai_client.completions(
         parameters: {
           model: "text-davinci-003",
@@ -45,11 +43,8 @@ class OpenaiService
       }
     )
 
-    puts question
-
     question_embedding = response['data'][0]['embedding']
     return question_embedding
-    # JSON.parse(File.read("log.txt"))
   end
 
   private

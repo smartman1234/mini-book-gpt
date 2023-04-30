@@ -53,6 +53,7 @@ class QuestionsController < ApplicationController
 
   private
   def find_question
+    
     @question = "What is The Minimalist Entrepreneur about?"
     @previous_question = Question.find_by(question: @question)
   end

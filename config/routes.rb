@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get '/ask', to: 'questions#ask'
+  post '/ask', to: 'questions#ask'
+  get '/question/:id', to: 'pages#home'
   
   root 'pages#home'
 end
