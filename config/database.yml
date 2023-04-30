@@ -79,8 +79,12 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+# production:
+#   <<: *default
+#   database: mini_book_gpt_production
+#   username: mini_book_gpt
+#   password: <%= ENV["MINI_BOOK_GPT_DATABASE_PASSWORD"] %>
+
 production:
   <<: *default
-  database: mini_book_gpt_production
-  username: mini_book_gpt
-  password: <%= ENV["MINI_BOOK_GPT_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
