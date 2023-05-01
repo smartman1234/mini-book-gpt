@@ -63,7 +63,9 @@ export const Main = () => {
         body: JSON.stringify({ question })
       });
       const data = await res.json();
-      setQna({ ...data });
+      if (!data.error) {
+        setQna({ ...data });
+      }
     } catch (error) {
       console.error('Error fetching answer:', error);
     }
