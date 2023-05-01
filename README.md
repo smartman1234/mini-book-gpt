@@ -2,6 +2,8 @@
 
 Mini-Book-GPT is a Rails app that allows users to ask questions and get answers based on the content of "The Minimalist Entrepreneur" by Sahil Lavingia. The app uses OpenAI API to generate embeddings and answers, React for the frontend, and PostgreSQL for the database.
 
+<img width="753" alt="image" src="https://user-images.githubusercontent.com/91294460/235437535-7c87484b-3285-43e9-a97f-cac584047074.png">
+
 ## Features
 
 - Converts "The Minimalist Entrepreneur" `book.pdf` into `embeddings.csv` in the format: `Page, Text, Embedding, Tokens`
@@ -12,6 +14,7 @@ Mini-Book-GPT is a Rails app that allows users to ask questions and get answers 
 - Retry functionality for handling API limits
 - OpenAI-service encapsulates request and logic to create a prompt and return an answer
 - Error handling for UI and API calls
+- I currently don't have a subscription for Resemble AI so I've used a sample one to show how I'd integrate the audio "/test_audio.mp3".
 
 ## Architecture Decisions
 
