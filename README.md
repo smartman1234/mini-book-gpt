@@ -1,4 +1,4 @@
-# Mini-Book-GPT
+# Mini-Book-GPT - https://mini-book-gpt.onrender.com/
 
 Mini-Book-GPT is a Rails app that allows users to ask questions and get answers based on the content of "The Minimalist Entrepreneur" by Sahil Lavingia. The app uses OpenAI API to generate embeddings and answers, React for the frontend, and PostgreSQL for the database.
 
