@@ -28,6 +28,10 @@ Mini-Book-GPT is a Rails app that allows users to ask questions and get answers 
 
 - Add tests for frontend and backend to ensure code quality and avoid potential bugs
 - Improve prompt generation by using delimiters for sections to provide better context to OpenAI API
+- To scale this app I'd like to take benefit of [Pinecone ecosystem within LangChain](https://python.langchain.com/en/latest/ecosystem/pinecone.html)
+- Show proper feedback to user if something fails and what went wrong. Currently I handle it silently.
+- Bundle and minify Frontend code better. There's lot more I can do to improve it so that it's served faster.
+
 
 ## Deployment
 
